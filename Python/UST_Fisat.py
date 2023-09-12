@@ -81,3 +81,26 @@ while(num!=0):
         num-=1
     count+=1
 print(count)
+
+## In an array A,find the absolute difference of the two adjacent elements and store it in array B.Find the sum of (B[i] xor i) and return the value of the sum modulous 10^9*7
+
+# SOLUTION 
+
+n=int(input("Length of Array: "))
+l1=[int(input("Enter The Array: ")) for i in range(n)]
+l2=[]
+sum1=0
+l2.append(l1[0])
+
+for i in range(0,len(l1)-1):
+    l2.append(abs(l1[i]-l1[i+1]))
+    
+for i in range(0, len(l2)):
+    sum1 += l2[i] ^ i
+    
+print(sum1%(10**9*7))
+
+## In array input from the user, remove even numbers and repeated numbers. Then display the size of array after the removal of these elements.
+
+# SOLUTION 
+

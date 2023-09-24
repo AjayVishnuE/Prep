@@ -262,18 +262,52 @@ class Solution:
 
 
 
-#  20. 
+#  20. Valid Parentheses
 
 # ... SOLUTION ...
 
+class Solution(object):
+    def isValid(self, s):
+        x = [] 
+        dict1 = {
+            '(': ')',
+            '{': '}',
+            '[': ']'
+        }
+        for ele in s:
+            if ele in dict1:
+                x.append(ele)
+            elif len(x) == 0 or ele != dict1[x.pop()]:
+                return False
+
+        return len(x) == 0
 
 
-
-#  21. 
+#  21.  Merge Two Sorted Lists( Linked Lists )
 
 # ... SOLUTION ...
 
-
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        arr =[]
+        l3 = None
+        while list1:
+            if list1 is not None:
+                arr.append(list1.val)
+                list1=list1.next
+        while list2:
+            if list2 is not None:
+                arr.append(list2.val)
+                list2=list2.next
+        arr.sort(reverse=True) 
+        for i in arr:
+            l3 = ListNode(i,l3)
+        return l3    
 
 
 #  22. 
@@ -305,12 +339,19 @@ class Solution:
 
 
 
-#  26. 
+#  26. Remove Duplicate From Sorted Array
 
 # ... SOLUTION ...
 
-
-
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        i = 1
+        while(i<len(nums)):
+            if nums[i-1] == nums[i]:
+                nums.pop(i)
+                i-=1
+            i+=1
+        return len(nums)
 
 
 #  27. Remove Element 
@@ -329,11 +370,13 @@ class Solution(object):
         return length
     
 
-#  28. 
+#  28. Find The Index of First Occurence In a String
 
 # ... SOLUTION ...
 
-
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        return haystack.find(needle)
 
 
 #  29. 
@@ -371,8 +414,6 @@ class Solution(object):
 
 
 
-
-
 #  34. 
 
 # ... SOLUTION ...
@@ -380,10 +421,18 @@ class Solution(object):
 
 
 
-
-#  . 
+#  . 35
 
 # ... SOLUTION ...
+
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        for ele in nums:
+            if(ele == target or ele > target):
+                return nums.index(ele)
+        else:
+            return  len(nums)
+
 
 #  . 
 

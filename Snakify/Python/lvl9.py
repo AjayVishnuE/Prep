@@ -13,25 +13,70 @@ for i in range(n):
             best_i, best_j = i, j
 print(best_i, best_j)
 
-#
+# Given an odd number integer n, produce a two-dimensional array of size (n×n). Fill each element with a single character string of "." . Then fill the middle row, the middle column and the diagnals with the single character string of "*" (an image of a snow flake). Print the array elements in (n×n) rows and columns and separate the characters with a single space.
 
+n = int(input())
+a = [['.'] * n for i in range(n)]
+for i in range(n):
+    a[i][i] = '*'
+    a[n // 2][i] = '*'
+    a[i][n // 2] = '*'
+    a[i][n - i - 1] = '*'
+for row in a:
+    print(' '.join(row))
 
+# Given two numbers n and m. Create a two-dimensional array of size (n×m) and populate it with the characters "." and "*" in a checkerboard pattern. The top left corner should have the character "." .
 
-#
+a = input().split()
+n, m = int(a[0]), int(a[1])
+a = []
+b = ". " * m
+for i in range(n):
+    a.append(b.split(" "))
+for i in range(n):
+    for j in range(m):
+        if (i+j)%2 != 0:
+            a[i][j] = "*"
+for i in range(n):
+    print(" ".join(a[i]))
 
+# Given an integer n, produce a two-dimensional array of size (n×n) and complete it according to the following rules, and print with a single space between characters:
+# On the main diagonal write 0 .
+# On the diagonals adjacent to the main, write 1 .
+# On the next adjacent diagonals write 2 and so forth.
+# Print the elements of the resulting array.
 
+n = int(input())
+a = [[abs(i - j) for j in range(n)] for i in range(n)]
+for row in a:
+    print(' '.join([str(i) for i in row]))
 
-#
+# Given an integer n, create a two-dimensional array of size (n×n) and populate it as follows, with spaces between each character:
+# The positions on the minor diagonal (from the upper right to the lower left corner) receive 1 .
+# The positions above this diagonal recieve 0 .
+# The positions below the diagonal receive 2 .
+# Print the elements of the resulting array.
 
+n = int(input())
+ls = []
+for i in range(n):
+    a = [[0]*(n-i-1) + [1] + [2] * i]
+    ls.append(a)
+for i in range(n):
+    for j in ls[i]:
+        print(' '.join([str(i) for i in j]))
 
+# Given two positive integers m and n, m lines of n elements, giving an m×n matrix A, followed by two non-negative integers i and j less than n, swap columns i and j of A and print the result.
+# Write a function swap_columns(a, i, j) and call it to exchange the columns.
 
-#
-
-
-
-#
-
-
+def swap_columns(a, i, j):
+    for k in range(len(a)):
+        a[k][i], a[k][j] = a[k][j], a[k][i]
+n, m = [int(i) for i in input().split()]
+a = [[int(j) for j in input().split()] for i in range(n)]
+i, j = [int(i) for i in input().split()]
+swap_columns(a, i, j)
+print('\n'.join([' '.join([str(i) for i in row]) for row in a]))
 
 #
 
